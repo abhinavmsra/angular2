@@ -1,0 +1,8 @@
+<ul class="employees" *ngFor="#employee of employees">
+  <a [routerLink]="['EmployeeDetail', {id: employee.id}]">
+    <li>
+      <span class="badge">{{employee.id}}</span>
+      {{employee.name}}
+    </li>
+  </a>
+</ul>

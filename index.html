@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/" />
     <meta charset="UTF-8">
     <title>Angular 2 Testing</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
@@ -10,19 +13,17 @@
 
     <script>
         System.config({
-            defaultJSExtensions: true,
-            map: {
-                'videogular2': 'node_modules/videogular2'
-            }
+            defaultJSExtensions: true
         });
     </script>
 
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
     <script src="node_modules/angular2/bundles/http.dev.js"></script>
 
     <script>
-        System.import('dist/my-app').catch(console.log.bind(console));
+        System.import('dist/main').catch(console.log.bind(console));
     </script>
 
 </head>
