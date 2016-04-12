@@ -1,19 +1,19 @@
 {
-  "name": "angular2-testing",
+  "name": "Learning Angular",
   "version": "1.0.0",
   "description": "Angular 2 testing with Karma, Jasmine and Istanbul",
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run typings",
     "typings": "typings install",
-    "start": "npm run test && http-server -c-1 -o -p 8875 .",
+    "start": "concurrently \"tsc -w -p src/ \" \"http-server -c-1 -o -p 3001 .\"",
     "build": "rm -rf dist && tsc -p src",
     "pretest": "npm run build",
     "test": "karma start karma.conf.js",
     "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage -t html",
     "coverage": "http-server -c-1 -o -p 9875 ./coverage"
   },
-  "author": "Raul Jimenez <elecash@gmail.com> (http://twofuckingedevelopers.com/)",
+  "author": "Abhinav Mishra <makeawish880@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "angular2": "2.0.0-beta.13",
@@ -24,6 +24,7 @@
     "zone.js": "0.6.6"
   },
   "devDependencies": {
+    "concurrently": "^2.0.0",
     "http-server": "0.8.5",
     "jasmine-core": "2.4.1",
     "karma": "0.13.19",
