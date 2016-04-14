@@ -1,13 +1,10 @@
-import { Component, Injectable } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
-import {Http, Response, Headers, RequestOptions } from 'angular2/http';
+///<reference path="../../node_modules/angular2/typings/browser.d.ts"/>
+
+import { Injectable } from 'angular2/core';
+import {Http, Response } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Employee }    from '../models/employee';
-
-@Component({
-  directives: [ROUTER_DIRECTIVES]
-})
 
 @Injectable()
 export class EmployeeDetailServiceComponent {
