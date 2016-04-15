@@ -1,6 +1,6 @@
 /// <reference path="../../typings/main/ambient/jasmine/jasmine.d.ts" />
 
-import {it, describe, expect, beforeEachProviders, inject, TestComponentBuilder} from "angular2/testing";
+import {it, describe, expect, beforeEachProviders, inject} from "angular2/testing";
 import {Response, XHRBackend, ResponseOptions, HTTP_PROVIDERS} from "angular2/http";
 import 'rxjs/Rx';
 

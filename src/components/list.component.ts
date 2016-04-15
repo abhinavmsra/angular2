@@ -1,5 +1,7 @@
+///<reference path="../../node_modules/angular2/typings/browser.d.ts"/>
+
 import { Component, OnInit } from 'angular2/core';
-import { ROUTER_DIRECTIVES, Router } from 'angular2/router';
+import { ROUTER_DIRECTIVES } from 'angular2/router';
 
 import { Employee } from '../models/employee';
 import { EmployeeListServiceComponent } from '../services/employee-list-service.component';
@@ -16,7 +18,6 @@ export class EmployeeListComponent implements OnInit {
   public errorMessage: string;
 
   constructor(
-    private _router:Router,
     private _listingService: EmployeeListServiceComponent
   ){}
 
