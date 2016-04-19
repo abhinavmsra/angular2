@@ -39,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Elecash/angular2-testing.git"
+    "url": "git+https://github.com/abhinavmsra/angular2.git"
   },
   "keywords": [
     "angular2",
@@ -50,7 +50,7 @@
     "typescript"
   ],
   "bugs": {
-    "url": "https://github.com/Elecash/angular2-testing/issues"
+    "url": "https://github.com/abhinavmsra/angular2/issues"
   },
-  "homepage": "https://github.com/Elecash/angular2-testing#readme"
+  "homepage": "https://github.com/abhinavmsra/angular2#readme"
 }

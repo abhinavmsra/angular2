@@ -9,21 +9,7 @@ import { EmployeeDeleteServiceComponent } from '../services/employee-delete-serv
 
 @Component({
   selector: 'employee-detail',
-  template: `
-  <h3>EMPLOYEE DETAIL</h3>
-
-  <p *ngIf="currentEmployee != undefined">
-    Name: {{currentEmployee.name}}
-    <br />
-    <a [routerLink]="['EditEmployee', {id: currentEmployee.id}]">
-      EDIT
-    </a>
-    <button type="button" class="btn btn-default"
-            (click)="deleteHandler(currentEmployee.id)">
-            Delete
-    </button>
-  </p>
-  `,
+  templateUrl: 'src/pages/employee-detail.component.html',
   providers: [
     EmployeeDetailServiceComponent,
     EmployeeDeleteServiceComponent

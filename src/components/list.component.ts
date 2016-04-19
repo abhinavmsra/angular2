@@ -7,16 +7,7 @@ import { EmployeeListServiceComponent } from '../services/employee-list-service.
 
 @Component({
   selector: 'employee-list',
-  template: `
-    <ul class="employees">
-  <li *ngFor="#employee of employees">
-    <a [routerLink]="['EmployeeDetail', {id: employee.id}]">
-      <span class="badge">{{employee.id}}</span>
-      {{employee.name}}
-    </a>
-  </li>
-</ul>
-  `,
+  templateUrl: 'src/pages/employee-list.component.html',
   directives: [ROUTER_DIRECTIVES],
   providers: [EmployeeListServiceComponent]
 })
