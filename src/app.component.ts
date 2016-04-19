@@ -24,7 +24,8 @@ import {EmployeeEditFormComponent} from './components/employee-edit-form.compone
     {
         path: '/employee',
         name: 'EmployeeList',
-        component: EmployeeListComponent},
+        component: EmployeeListComponent
+    },
     {
         path: '/employee/new',
         name: 'NewEmployee',

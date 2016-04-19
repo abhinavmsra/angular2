@@ -7,13 +7,28 @@ import { EmployeeFormServiceComponent } from '../services/employee-form-service.
 
 @Component({
   selector: 'employee-form',
-  templateUrl: 'src/pages/employee-form.component.html',
+  template: `
+    <div class="container">
+    <h3>Employee Form</h3>
+    <form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+       <input type="text" class="form-control" required
+            (keyup)="onKey($event)"
+            ngControl="name"  #name="ngForm" >
+       <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+         Name is required
+       </div>
+      </div>
+      <button type="button" class="btn btn-default" (click)="newEmployee()" [disabled]="!employeeForm.form.valid">ADD</button>
+    </form>
+  </div>
+  `,
   providers: [EmployeeFormServiceComponent]
 })
 
 export class EmployeeFormComponent {
   constructor(
-    private _router: Router,
     private _employeeService: EmployeeFormServiceComponent
   ){}
 

@@ -4,3 +4,4 @@ coverage
 dist
 typings
 npm-debug.log
+db.json

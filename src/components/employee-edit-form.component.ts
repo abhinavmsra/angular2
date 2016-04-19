@@ -7,7 +7,22 @@ import { EmployeeEditFormServiceComponent } from '../services/employee-edit-form
 
 @Component({
   selector: 'employee-edit-form',
-  templateUrl: 'src/pages/employee-edit-form.component.html',
+  template: `
+    <div class="container">
+    <h3>Employee Edit Form</h3>
+    <form (ngSubmit)="onSubmit()" #employeeForm="ngForm" *ngIf="currentEmployee != undefined">
+      <div class="form-group">
+        <label for="name">Name</label>
+       <input type="text" class="form-control" required [(ngModel)]="currentEmployee.name"
+            ngControl="name"  #name="ngForm">
+       <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+         Name is required
+       </div>
+      </div>
+      <button type="button" class="btn btn-default" (click)="editEmployee()" [disabled]="!employeeForm.form.valid">Update</button>
+    </form>
+  </div>
+  `,
   providers: [
     EmployeeDetailServiceComponent,
     EmployeeEditFormServiceComponent

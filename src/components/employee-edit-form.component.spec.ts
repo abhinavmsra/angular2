@@ -25,6 +25,7 @@ import {
     ROUTER_PRIMARY_COMPONENT,
     APP_BASE_HREF,
     Router,
+    RouteParams,
     RouteRegistry
 } from 'angular2/router';
 import {RootRouter} from "angular2/src/router/router";
@@ -45,57 +46,57 @@ import { BrowserDomAdapter } from 'angular2/src/platform/browser/browser_adapter
 import 'rxjs/Rx';
 
 import { AppComponent } from '../app.component';
-import { EmployeeListComponent } from './list.component';
-import { EmployeeListServiceComponent } from '../services/employee-list-service.component';
+import { EmployeeEditFormComponent } from './employee-edit-form.component';
+import { EmployeeDetailServiceComponent } from '../services/employee-detail-service.component';
+import { EmployeeEditFormServiceComponent } from '../services/employee-edit-form-service.component';
 
-class MockEmployeeListServiceComponent {}
+
+class MockEmployeeDetailServiceComponent {}
+
+class MockEmployeeEditFormServiceComponent {}
+
 
 @Component({
-    template: '<employee-list></employee-list>',
-    directives: [EmployeeListComponent],
-    providers: [MockEmployeeListServiceComponent]
+    template: '<employee-edit-form></employee-edit-form>',
+    directives: [EmployeeEditFormComponent]
 })
-class TestMyList {}
+class TestMyEditForm{}
 
 
-describe('Employee List Tests', () => {
+describe('Employee Edit Form Tests', () => {
     resetBaseTestProviders();
     setBaseTestProviders(
-        TEST_BROWSER_PLATFORM_PROVIDERS, 
+        TEST_BROWSER_PLATFORM_PROVIDERS,
         TEST_BROWSER_APPLICATION_PROVIDERS
     );
-    //resetBaseTestProviders();
     beforeEachProviders(() => {
         return [
             ROUTER_DIRECTIVES,
             ROUTER_PROVIDERS,
             HTTP_PROVIDERS,
-            EmployeeListServiceComponent,
+            EmployeeEditFormComponent,
+            EmployeeDetailServiceComponent,
+            EmployeeEditFormServiceComponent,
             provide(XHRBackend, {useClass: MockBackend}),
             provide(APP_BASE_HREF, {useValue: '/'}),
             provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
             provide(ApplicationRef, {useClass: MockApplicationRef}),
             RouteRegistry,
             provide(Location, {useClass: SpyLocation}),
-            provide(Router, {useClass: RootRouter})
+            provide(Router, {useClass: RootRouter}),
+            provide(RouteParams, { useValue: new RouteParams({ id: '1' }) })
         ]
     });
 
-    it('Should display the list of employees',
+    it('Should display the edit form of employees',
         injectAsync([XHRBackend, TestComponentBuilder], (backend, tcb) => {
             backend.connections.subscribe(
                 (connection:MockConnection) => {
                     var options = new ResponseOptions({
-                        body: [
-                            {
-                                "id": 1,
-                                "name": "Abhinav Mishra"
-                            },
-                            {
-                                "id": 2,
-                                "name": "Roshan Shrestha"
-                            }
-                        ]
+                        body: {
+                            "id": 1,
+                            "name": "Roshan Shrestha"
+                        }
                     });
 
                     var response = new Response(options);
@@ -105,23 +106,11 @@ describe('Employee List Tests', () => {
             );
 
             return tcb
-                .createAsync(TestMyList)
+                .createAsync(TestMyEditForm)
                 .then((fixture) => {
                     fixture.detectChanges();
                     var compiled = fixture.nativeElement;
-
-                    var listCount = compiled.querySelectorAll('a').length;
-
-                    // Employee count expectation
-                    expect(listCount).toBe(2);
-
-                    // Employee name expectation
-                    expect(compiled.innerHTML).toContain('Abhinav Mishra');
-
-                    var src = (new BrowserDomAdapter()).getProperty(compiled.querySelector('a'), 'href');
-
-                    // Employee link expectation
-                    expect(src).toBe('http://localhost:9876/employee/1');
+                    expect(compiled.innerHTML).toContain('Employee Edit Form');
                 });
         })
     );

@@ -1,5 +1,4 @@
 ///<reference path="../../node_modules/angular2/typings/browser.d.ts"/>
-
 import { Component, OnInit } from 'angular2/core';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
 
@@ -8,7 +7,16 @@ import { EmployeeListServiceComponent } from '../services/employee-list-service.
 
 @Component({
   selector: 'employee-list',
-  templateUrl: 'src/pages/employee-list.component.html',
+  template: `
+    <ul class="employees">
+  <li *ngFor="#employee of employees">
+    <a [routerLink]="['EmployeeDetail', {id: employee.id}]">
+      <span class="badge">{{employee.id}}</span>
+      {{employee.name}}
+    </a>
+  </li>
+</ul>
+  `,
   directives: [ROUTER_DIRECTIVES],
   providers: [EmployeeListServiceComponent]
 })
