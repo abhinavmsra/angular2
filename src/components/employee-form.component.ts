@@ -1,6 +1,4 @@
 import { Component } from 'angular2/core';
-import { NgForm }    from 'angular2/common';
-import { Router } from 'angular2/router';
 
 import { Employee }    from '../models/employee';
 import { EmployeeFormServiceComponent } from '../services/employee-form-service.component';
